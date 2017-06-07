@@ -114,7 +114,7 @@ static enum test_membarrier_status test_membarrier_query(void)
 		return test_result("command MEMBARRIER_CMD_SHARED is not supported.\n",
 				   TEST_MEMBARRIER_FAIL);
 	}
-	return test_result("sys_membarrier availble", TEST_MEMBARRIER_PASS);
+	return test_result("sys_membarrier available", TEST_MEMBARRIER_PASS);
 }
 
 int main(int argc, char **argv)
