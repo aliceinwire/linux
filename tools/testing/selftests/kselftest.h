@@ -31,6 +31,13 @@ struct ksft_count {
 
 static struct ksft_count ksft_cnt;
 
+static inline int ksft_test_num(void)
+{
+	return ksft_cnt.ksft_pass + ksft_cnt.ksft_fail +
+		ksft_cnt.ksft_xfail + ksft_cnt.ksft_xpass +
+		ksft_cnt.ksft_xskip;
+}
+
 static inline void ksft_inc_pass_cnt(void) { ksft_cnt.ksft_pass++; }
 static inline void ksft_inc_fail_cnt(void) { ksft_cnt.ksft_fail++; }
 static inline void ksft_inc_xfail_cnt(void) { ksft_cnt.ksft_xfail++; }
