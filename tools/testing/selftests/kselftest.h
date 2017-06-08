@@ -83,13 +83,15 @@ static inline int ksft_exit_skip(void)
 {
 	exit(KSFT_SKIP);
 }
-static inline int ksft_yaml_start(void)
+
+static inline int ksft_yaml(const char *msg, const char *severity,
+                           const char *data)
 {
-	printf("---\n");
-}
-static inline int ksft_yaml_end(void)
-{
-	printf("...\n");
+        printf("---\n");
+        printf("message: %s \n", msg);
+        printf("severity: %s \n", severity);
+        printf("data: %s \n", data);
+        printf("...\n");
 }
 
 #endif /* __KSELFTEST_H */
