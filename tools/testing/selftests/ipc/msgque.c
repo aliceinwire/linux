@@ -245,30 +245,30 @@ int main(int argc, char **argv)
 	int msg, pid, err;
 	struct msgque_data msgque;
 
-	printf("TAP version 13\n");
+	ksft_print_header();
 
 	if (getuid() != 0)
-		return test_result("not root", TEST_IPC_FAIL);
-	test_result("root",
+		return ksft_test_result("not root", TEST_IPC_FAIL);
+	ksft_test_result("root",
 		    TEST_IPC_PASS);
 
 	msgque.key = ftok(argv[0], 822155650);
 	if (msgque.key == -1)
-		return test_result("Can't make key", TEST_IPC_FAIL);
-	test_result("key made", TEST_IPC_PASS);
+		return ksft_test_result("Can't make key", TEST_IPC_FAIL);
+	ksft_test_result("key made", TEST_IPC_PASS);
 
 	msgque.msq_id = msgget(msgque.key, IPC_CREAT | IPC_EXCL | 0666);
 	if (msgque.msq_id == -1) {
 		err = -errno;
-		test_result("Can't create queue",
+		ksft_test_result("Can't create queue",
 			    TEST_IPC_FAIL);
 		goto err_out;
 	}
-	test_result("Created Queue", TEST_IPC_PASS);
+	ksft_test_result("Created Queue", TEST_IPC_PASS);
 
 	err = fill_msgque(&msgque);
 	if (err) {
-		test_result("Failed to fill queue",
+		ksft_test_result("Failed to fill queue",
 			    TEST_IPC_FAIL);
 		goto err_destroy;
 	}
@@ -309,7 +309,6 @@ int main(int argc, char **argv)
 	test_result("Queue tested correctly",
 		    TEST_IPC_PASS);
 
-	printf("1..%d\n", test_num);
 	return ksft_exit_pass();
 
 err_destroy:
