@@ -65,5 +65,13 @@ static inline int ksft_exit_skip(void)
 {
 	exit(KSFT_SKIP);
 }
+static inline int ksft_yaml_start(void)
+{
+	printf("---\n");
+}
+static inline int ksft_yaml_end(void)
+{
+	printf("...\n");
+}
 
 #endif /* __KSELFTEST_H */
