@@ -49,8 +49,19 @@ static inline int ksft_exit_pass(void)
 {
 	exit(KSFT_PASS);
 }
+static inline int ksft_exit_tap_pass(void)
+{
+	ksft_print_cnts();
+	exit(KSFT_PASS);
+}
 static inline int ksft_exit_fail(void)
 {
+	exit(KSFT_FAIL);
+}
+static inline int ksft_exit_tap_fail(void)
+{
+	printf("Bail out!\n");
+	ksft_print_cnts();
 	exit(KSFT_FAIL);
 }
 static inline int ksft_exit_xfail(void)
