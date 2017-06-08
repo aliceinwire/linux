@@ -31,6 +31,8 @@ int main(int argc, char **argv)
 	int fd1, fd2;
 	int status;
 
+	ksft_print_header();
+
 	fd1 = open(kpath, O_RDWR | O_CREAT | O_TRUNC, 0644);
 	pid1 = getpid();
 
